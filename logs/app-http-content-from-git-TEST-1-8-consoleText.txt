@@ -1,0 +1,409 @@
+Branch indexing
+ > git rev-parse --is-inside-work-tree # timeout=10
+Setting origin to git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git
+ > git config remote.origin.url git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git config --get remote.origin.url # timeout=10
+using GIT_SSH to set credentials gitlab-vadim.zenin-ssh
+ > git fetch --tags --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/TEST-1
+Seen 1 remote branch
+Obtained Jenkinsfile from 59564d119dad11fc2bf3e58c6558702b75a881c6
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] ecsTaskTemplate
+[Pipeline] {
+[Pipeline] node
+Still waiting to schedule task
+‘ecs-cloud-1-test---8-zlwh3-h2mlp’ is offline
+Running on ecs-cloud-1-test---8-zlwh3-h2mlp in /home/jenkins/workspace/app-http-content-from-git_TEST-1
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+using credential gitlab-vadim.zenin-ssh
+Cloning the remote Git repository
+Cloning with configured refspecs honoured and without tags
+Cloning repository git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git
+ > git init /home/jenkins/workspace/app-http-content-from-git_TEST-1 # timeout=10
+Fetching upstream changes from git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.26.2'
+using GIT_SSH to set credentials gitlab-vadim.zenin-ssh
+ > git fetch --no-tags --force --progress -- git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Fetching without tags
+Checking out Revision 59564d119dad11fc2bf3e58c6558702b75a881c6 (TEST-1)
+ > git config remote.origin.url git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git # timeout=10
+Fetching upstream changes from git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git
+using GIT_SSH to set credentials gitlab-vadim.zenin-ssh
+ > git fetch --no-tags --force --progress -- git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 59564d119dad11fc2bf3e58c6558702b75a881c6 # timeout=10
+Commit message: "TEST-1 publish=true"
+ > git rev-list --no-walk e25aaeaa52f4a12e36dca48353244e0c5828045e # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] gitlabBuilds
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 15 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Code)
+[Pipeline] gitlabCommitStatus
+[Pipeline] {
+[Pipeline] checkout
+using credential gitlab-vadim.zenin-ssh
+Fetching changes from the remote Git repository
+Fetching without tags
+Checking out Revision 59564d119dad11fc2bf3e58c6558702b75a881c6 (TEST-1)
+Commit message: "TEST-1 publish=true"
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+INFO: Jenkins Agent instance private IP address
+[Pipeline] sh
+ > git rev-parse --is-inside-work-tree # timeout=10
+ > git config remote.origin.url git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git # timeout=10
+Fetching upstream changes from git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.26.2'
+using GIT_SSH to set credentials gitlab-vadim.zenin-ssh
+ > git fetch --no-tags --force --progress -- git@gitlab.example.com:vadim.zenin/app-http-content-from-git.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 59564d119dad11fc2bf3e58c6558702b75a881c6 # timeout=10
++ curl -s http://169.254.169.254/latest/meta-data/local-ipv4
+10.100.6.58
+[Pipeline] sh
++ free -mh
+              total        used        free      shared  buff/cache   available
+Mem:          3.8Gi       302Mi       1.8Gi       0.0Ki       1.7Gi       3.3Gi
+Swap:            0B          0B          0B
+[Pipeline] sh
++ uniq
++ grep 'cpu cores' /proc/cpuinfo
+cpu cores	: 1
+[Pipeline] echo
+Checking branch and version
+[Pipeline] sh
++ git log -n 1 '--format=%B' 59564d119dad11fc2bf3e58c6558702b75a881c6
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // gitlabCommitStatus
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build App)
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] gitlabCommitStatus
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+INFO: Build App
+[Pipeline] echo
+INFO: Creating info.json
+[Pipeline] sh
+{"ReleaseInfo":{"ApplicationName":"app-http-content-from-git","Branch":"TEST-1","CommitHash":"59564d119dad11fc2bf3e58c6558702b75a881c6","Version":"TEST-1.0.0.8"},"ArtifactName":"null"}
+[Pipeline] echo
+INFO: ./html/info.json
+[Pipeline] sh
++ ls -l ./html/info.json
+-rw-r--r--    1 root     root           185 Dec 13 14:39 ./html/info.json
+[Pipeline] sh
++ cat ./html/info.json
+{"ReleaseInfo":{"ApplicationName":"app-http-content-from-git","Branch":"TEST-1","CommitHash":"59564d119dad11fc2bf3e58c6558702b75a881c6","Version":"TEST-1.0.0.8"},"ArtifactName":"null"}
+[Pipeline] sh
++ ls -l ./html/
+total 12
+-rw-r--r--    1 root     root            16 Dec 13 14:39 health.html
+-rw-r--r--    1 root     root            57 Dec 13 14:39 index.html
+-rw-r--r--    1 root     root           185 Dec 13 14:39 info.json
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // gitlabCommitStatus
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker)
+[Pipeline] gitlabCommitStatus
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Build docker app-http-content-from-git:TEST-1.0.0.8
+[Pipeline] sh
++ docker build '--no-cache=true' --compress --rm -t app-http-content-from-git:TEST-1.0.0.8 --build-arg 'ARG_SOURCE_DOCKER_VERSION=1-alpine' --build-arg 'ARG_APPL_NAME=app-http-content-from-git' --build-arg 'ARG_DOCKER_TAG=TEST-1.0.0.8' --build-arg 'ARG_GIT_URL=https://github.com/Vadim-Zenin' --build-arg 'ARG_GIT_BRANCH=TEST-1' --build-arg 'ARG_COMMIT_HASH=59564d119dad11fc2bf3e58c6558702b75a881c6' -f Dockerfile .
+Sending build context to Docker daemon  31.02kB
+
+Step 1/28 : ARG ARG_SOURCE_DOCKER_VERSION
+Step 2/28 : FROM nginx:${ARG_SOURCE_DOCKER_VERSION}
+ ---> 0fde4fb87e47
+Step 3/28 : ARG ARG_APPL_NAME
+ ---> Running in e77f9f720d81
+Removing intermediate container e77f9f720d81
+ ---> 9896ef25753d
+Step 4/28 : ARG ARG_DOCKER_TAG
+ ---> Running in 092954edefd7
+Removing intermediate container 092954edefd7
+ ---> eac20663710e
+Step 5/28 : ARG ARG_GIT_URL
+ ---> Running in 829940608cdd
+Removing intermediate container 829940608cdd
+ ---> 2b80402c8c63
+Step 6/28 : ARG ARG_GIT_BRANCH
+ ---> Running in ce4abfe5ec87
+Removing intermediate container ce4abfe5ec87
+ ---> 9f0527e78f2d
+Step 7/28 : ARG ARG_COMMIT_HASH
+ ---> Running in 577be77ddaec
+Removing intermediate container 577be77ddaec
+ ---> 49a191d45a3d
+Step 8/28 : ARG ARG_SERVICE_PORT
+ ---> Running in 6a1083df5e41
+Removing intermediate container 6a1083df5e41
+ ---> 7d4fcfc532b5
+Step 9/28 : ARG ARG_EXPOSE_PORT
+ ---> Running in 95fc511673fb
+Removing intermediate container 95fc511673fb
+ ---> 6c4c3006d715
+Step 10/28 : LABEL org.label-schema.maintainer="vadim Zenin"   org.label-schema.docker.schema-version="1.0"   org.label-schema.name="${ARG_APPL_NAME}"   org.label-schema.version="${ARG_DOCKER_TAG}"   org.label-schema.description="${ARG_APPL_NAME} docker image"   org.label-schema.docker.cmd="docker run -d --rm --name ${PROJECT_NAME} --hostname ${PROJECT_NAME} -p ${ARG_EXPOSE_PORT}:${ARG_SERVICE_PORT} ${PROJECT_NAME}:${ARTIFACT_VERSION}"
+ ---> Running in 1af0c7758202
+Removing intermediate container 1af0c7758202
+ ---> 507532b3dcc2
+Step 11/28 : ENV SERVICE_NAME ${ARG_APPL_NAME}
+ ---> Running in 3983486ee16b
+Removing intermediate container 3983486ee16b
+ ---> 6c11f5783e3a
+Step 12/28 : ENV SERVICE_HOSTNAME ${SERVICE_NAME}
+ ---> Running in 6818cec1e5d1
+Removing intermediate container 6818cec1e5d1
+ ---> ccbbfc4250d3
+Step 13/28 : ENV SERVICE_PORT ${ARG_SERVICE_PORT}
+ ---> Running in 4f40e3c4481f
+Removing intermediate container 4f40e3c4481f
+ ---> 085befee68cd
+Step 14/28 : ENV EXPOSE_PORT ${ARG_EXPOSE_PORT}
+ ---> Running in 06b9a29b876f
+Removing intermediate container 06b9a29b876f
+ ---> c45c0618fb60
+Step 15/28 : ENV APP_HOME /usr/share/nginx/
+ ---> Running in f25a0da41a0a
+Removing intermediate container f25a0da41a0a
+ ---> e9a672f277c8
+Step 16/28 : ENV DOCKER_TAG ${ARG_DOCKER_TAG}
+ ---> Running in 6148e8d966f7
+Removing intermediate container 6148e8d966f7
+ ---> 881808b3e595
+Step 17/28 : ENV GIT_BRANCH ${ARG_GIT_BRANCH}
+ ---> Running in 47c700b85003
+Removing intermediate container 47c700b85003
+ ---> 581a5b10cf9a
+Step 18/28 : ENV COMMIT_HASH ${ARG_COMMIT_HASH}
+ ---> Running in 3ce874177c13
+Removing intermediate container 3ce874177c13
+ ---> 2bdf2f9f77b9
+Step 19/28 : ENV ENV_NAME dev
+ ---> Running in 995239635ee8
+Removing intermediate container 995239635ee8
+ ---> 22db4e387a74
+Step 20/28 : ENV ENV_SPACE local
+ ---> Running in 4e2fc6424bc0
+Removing intermediate container 4e2fc6424bc0
+ ---> 9f378783e080
+Step 21/28 : RUN apk upgrade --update --no-cache && 	apk add --no-cache wget git && 	rm -rf /var/lib/apt/lists/*
+ ---> Running in d5802805556c
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/4) Upgrading libcrypto1.1 (1.1.1g-r0 -> 1.1.1i-r0)
+(2/4) Upgrading libssl1.1 (1.1.1g-r0 -> 1.1.1i-r0)
+(3/4) Upgrading libcurl (7.69.1-r2 -> 7.69.1-r3)
+(4/4) Upgrading curl (7.69.1-r2 -> 7.69.1-r3)
+Executing busybox-1.31.1-r19.trigger
+Executing ca-certificates-20191127-r4.trigger
+OK: 25 MiB in 42 packages
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing expat (2.2.9-r1)
+(2/6) Installing pcre2 (10.35-r0)
+(3/6) Installing git (2.26.2-r0)
+(4/6) Installing libunistring (0.9.10-r0)
+(5/6) Installing libidn2 (2.3.0-r0)
+(6/6) Installing wget (1.20.3-r1)
+Executing busybox-1.31.1-r19.trigger
+OK: 42 MiB in 48 packages
+Removing intermediate container d5802805556c
+ ---> 21eebd66b6da
+Step 22/28 : RUN	rm -fr ${APP_HOME}/html && 	cd /tmp/ && 	git clone --single-branch --depth 1 ${ARG_GIT_URL}/${ARG_APPL_NAME}.git && 	mv /tmp/${ARG_APPL_NAME}/html ${APP_HOME} && 	rm -fr /tmp/${ARG_APPL_NAME} && 	ls -l ${APP_HOME}/html/*
+ ---> Running in 34965584982a
+[91mCloning into 'app-http-content-from-git'...
+[0m-rw-r--r--    1 root     root            16 Dec 13 14:39 /usr/share/nginx//html/health.html
+-rw-r--r--    1 root     root            57 Dec 13 14:39 /usr/share/nginx//html/index.html
+Removing intermediate container 34965584982a
+ ---> d212659209bc
+Step 23/28 : WORKDIR ${APP_HOME}
+ ---> Running in a760f073d0d1
+Removing intermediate container a760f073d0d1
+ ---> aa3e695394b2
+Step 24/28 : HEALTHCHECK --interval=20s --timeout=10s CMD wget --quiet --tries=1 --spider http://localhost:${SERVICE_PORT}/monitor.html || exit 4
+ ---> Running in 44ff2bd46fb6
+Removing intermediate container 44ff2bd46fb6
+ ---> a801e9f1a32d
+Step 25/28 : ENTRYPOINT ["/docker-entrypoint.sh"]
+ ---> Running in 4b9967b1eb89
+Removing intermediate container 4b9967b1eb89
+ ---> dc86342d9224
+Step 26/28 : EXPOSE ${EXPOSE_PORT}
+ ---> Running in c1ef826e9715
+Removing intermediate container c1ef826e9715
+ ---> baa4b813d885
+Step 27/28 : STOPSIGNAL SIGQUIT
+ ---> Running in 91e23c49ce4f
+Removing intermediate container 91e23c49ce4f
+ ---> d611267418ba
+Step 28/28 : CMD ["nginx", "-g", "daemon off;"]
+ ---> Running in 72f3dabac9a4
+Removing intermediate container 72f3dabac9a4
+ ---> 3e44dcc4a7f8
+Successfully built 3e44dcc4a7f8
+Successfully tagged app-http-content-from-git:TEST-1.0.0.8
+[Pipeline] sh
++ docker images 123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // gitlabCommitStatus
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Publish Docker)
+[Pipeline] gitlabCommitStatus
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Logging into AWS Docker Registry
+[Pipeline] sh
++ aws sts get-caller-identity
+{
+    "UserId": "123456789012345678901:i-0204861b7439a0d97",
+    "Account": "123456789012",
+    "Arn": "arn:aws:sts::123456789012:assumed-role/RoleExample/i-0204861b7439a0d97"
+}
+[Pipeline] sh
++ docker login --username AWS --password-stdin 123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git
++ aws ecr get-login-password --region eu-west-1
+Login Succeeded
+[Pipeline] sh
++ docker tag app-http-content-from-git:TEST-1.0.0.8 123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git:TEST-1.0.0.8
+[Pipeline] sh
++ docker push 123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git:TEST-1.0.0.8
+The push refers to repository [123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git]
+0b13d58d7413: Preparing
+7fb68ab1ef7c: Preparing
+bcfa147251df: Preparing
+8b8f816f6497: Preparing
+a2218b9f1017: Preparing
+7c8e6ddfd455: Preparing
+f4666769fca7: Preparing
+7c8e6ddfd455: Waiting
+f4666769fca7: Waiting
+bcfa147251df: Layer already exists
+a2218b9f1017: Layer already exists
+8b8f816f6497: Layer already exists
+7c8e6ddfd455: Layer already exists
+f4666769fca7: Layer already exists
+0b13d58d7413: Pushed
+7fb68ab1ef7c: Pushed
+TEST-1.0.0.8: digest: sha256:67e9481071b03ab89680aa15fd4cd9599394f183bee83b25c86d92572ba63b56 size: 1780
+[Pipeline] sh
++ docker images 123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git:TEST-1.0.0.8
+REPOSITORY                                                               TAG                 IMAGE ID            CREATED             SIZE
+123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git   TEST-1.0.0.8        3e44dcc4a7f8        9 seconds ago       44.1MB
+[Pipeline] sh
++ docker rmi -f 123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git:TEST-1.0.0.8
+Untagged: 123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git:TEST-1.0.0.8
+Untagged: 123456789011.dkr.ecr.eu-west-1.amazonaws.com/app-http-content-from-git@sha256:67e9481071b03ab89680aa15fd4cd9599394f183bee83b25c86d92572ba63b56
+[Pipeline] sh
++ docker rmi -f app-http-content-from-git:TEST-1.0.0.8
+Untagged: app-http-content-from-git:TEST-1.0.0.8
+Deleted: sha256:3e44dcc4a7f8345baeb24bf06a6eb21ed6329fad202cf33fc8910c28daff0a10
+Deleted: sha256:d611267418baa8649a3c8c679d6607362dcfe7aa03ebc42f977ff6f0ccdecc67
+Deleted: sha256:baa4b813d88552fae8a6fe56872bb1c00cdbbeb4c75664f025245751fbfaae2f
+Deleted: sha256:dc86342d92248f6a287aac066b02318b15b1e29e1f26abcb903506669a122da5
+Deleted: sha256:a801e9f1a32d9c2542747fe6e517bd6787264e0e6f033a0e2f7f71dec3fbaf7e
+Deleted: sha256:aa3e695394b274dcbce28fe15dbfe325f272575717b348a30f21954288d33dc2
+Deleted: sha256:d212659209bc477d8cb26d0100dbdf4bfe21736e1a5b3f388f9e76c66eed7cbe
+Deleted: sha256:a52f70814850d9f6c54c62917eeb4988f199efb7cc5fade76594a4a7d38b7a8b
+Deleted: sha256:21eebd66b6da7e79a4bccaeb988c13efd7d65eedef029aca4eae3182da603423
+Deleted: sha256:958c4b006c375f7855135c0cceabc4a75f69f7f420747151ad848c1823308c9b
+Deleted: sha256:9f378783e0808c583bb377b8f8dd828782c0039245ab1c5b053b1b5ec499b11e
+Deleted: sha256:22db4e387a74db8ba8b333aaab3d542aac4f6da52143c8c0d107e7f1a4b148e1
+Deleted: sha256:2bdf2f9f77b9c0778358e55be93a28c413aa829c2d839b7005f22d9c04aaa31f
+Deleted: sha256:581a5b10cf9a10d5ebc1697b952342af5f05fadc42307ff49e7b587780100ca6
+Deleted: sha256:881808b3e595b6e16fba70dbe663fc58912750a6c705e04fa000074799e2baaf
+Deleted: sha256:e9a672f277c8ed2514522a2ee95d4f18cd1331cac7eff05a91119be77b56af36
+Deleted: sha256:c45c0618fb60b6830fc54599d929be605f5d835809af9dc6a9d4315da2c0b9f2
+Deleted: sha256:085befee68cdd56c8192f3aa74b95a9e2206241753c1cb6f5797165eedb29331
+Deleted: sha256:ccbbfc4250d31909c0043441b6dfa151730b21e35556abca97b10382757a0304
+Deleted: sha256:6c11f5783e3aafb4e2242b9cf4a0b3335e8f24f6024af55f485495fe16a2b48a
+Deleted: sha256:507532b3dcc227c204f2581e4e9eeb7cbb68248a75c07f62c05433617764eee3
+Deleted: sha256:6c4c3006d715d126f8cb5a8b3104916f1081dd7bc4f65dfe48b5bca355641ae5
+Deleted: sha256:7d4fcfc532b5c3ca5bcbe288caf7ed1191ceb3e8c902c2741a4fb276453eb4e5
+Deleted: sha256:49a191d45a3d9d1451ef44e63ecf837d3b314a7dbfca9c7a22ca96ff0ec88caf
+Deleted: sha256:9f0527e78f2d86167a0fbfb0c6cdc6bc15a72c9588127b080166a98272dae4e2
+Deleted: sha256:2b80402c8c63e915b62cbb7a11080ac551aff95a2ba2b671daaafd42689e64d8
+Deleted: sha256:eac20663710e025b7f31d66ccaad73eebeac76cddce27f716ae7de91c75b0940
+Deleted: sha256:9896ef25753d44fad556131e76d90a1045f73628bdf1116fd094379b5248b149
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // gitlabCommitStatus
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ docker system prune -f
+Deleted Containers:
+7b894fe3c79e45dc0119aa02bc7c69a6ed519851fd644ea7752339fe1889f830
+b1c3946a20e02293c346adce3dc5f490cfbcdbb96e9830232db571a935b1a22d
+
+Total reclaimed space: 72.93MB
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] deleteDir
+[Pipeline] updateGitlabCommitStatus
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // gitlabBuilds
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // ecsTaskTemplate
+[Pipeline] End of Pipeline
+Finished: SUCCESS
