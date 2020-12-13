@@ -21,7 +21,7 @@ ENV SERVICE_NAME ${ARG_APPL_NAME}
 ENV SERVICE_HOSTNAME ${SERVICE_NAME}
 ENV SERVICE_PORT ${ARG_SERVICE_PORT}
 ENV EXPOSE_PORT ${ARG_EXPOSE_PORT}
-ENV APP_HOME /usr/share/nginx/
+ENV APP_HOME /usr/share/nginx
 
 ENV DOCKER_TAG ${ARG_DOCKER_TAG}
 ENV GIT_BRANCH ${ARG_GIT_BRANCH}
@@ -38,6 +38,8 @@ RUN	rm -fr ${APP_HOME}/html && \
 	mv /tmp/${ARG_APPL_NAME}/html ${APP_HOME} && \
 	rm -fr /tmp/${ARG_APPL_NAME} && \
 	ls -l ${APP_HOME}/html/*
+
+COPY ./html/info.* ${APP_HOME}/html/
 
 WORKDIR ${APP_HOME}
 
