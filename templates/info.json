@@ -1,0 +1,1 @@
+{"ReleaseInfo":{"ApplicationName":"${PROJECT_NAME}","Branch":"${BRANCH_NAME}","CommitHash":"${GIT_COMMIT}","Version":"${ARTIFACT_VERSION}"},"ArtifactName":"${ARTIFACT_NAME}"}
