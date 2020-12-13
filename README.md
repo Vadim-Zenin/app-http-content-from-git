@@ -24,7 +24,9 @@ bash ./docker-build.sh
 
 ## CI build
 
-Use Jenkinsfile in Jenkins application
+Use Jenkinsfile in Jenkins application.
+
+Commit changes with "publish=true" in message to publish a docker image to a AWS ECR repository.
 
 ![Jenkins pipeline](images/20201213-151352-screenshot.png)
 
