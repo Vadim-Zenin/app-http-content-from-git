@@ -38,7 +38,7 @@ The code stored on internal GitLab
 
 ![info.json](images/20201213-185544-screenshot.png)
 
-Docker image would be stored in AWS ECR
+Docker image would be stored in AWS ECR. The repository must be created by [aws-eks-vpc-3priv-3pub-3db-3front-sn](https://github.com/Vadim-Zenin/aws-eks-vpc-3priv-3pub-3db-3front-sn).
 
 ![AWS ECR](images/20201213-183519-screenshot.png)
 
