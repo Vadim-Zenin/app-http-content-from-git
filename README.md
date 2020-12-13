@@ -6,7 +6,7 @@ Test application with HTTP content in html folder synchronised from git reposito
 
 health.html is used for monitoring
 
-![health.html](images/20201213-185443-screenshot.png)
+![health.html](images/20201213-185509-screenshot.png)
 
 ## Manual build
 
